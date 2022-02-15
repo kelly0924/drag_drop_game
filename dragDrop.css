@@ -1,0 +1,51 @@
+#header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#headerDivShow {
+  text-align: center;
+  width: 50%;
+  background-color: red;
+}
+.headerDivShowImg {
+  width: 150px;
+  height: 200px;
+}
+/* main css */
+#main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#mainDivTime {
+  background-color: green;
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  text-align: center;
+  position: relative;
+  top: 100px;
+}
+.mainDivtimeImg {
+  display: none;
+}
+#mainDve {
+  display: flex;
+  justify-content: space-around;
+}
+#mainDivSelect {
+  text-align: center;
+  width: 50%;
+  display: none;
+}
+.mainDivSelectImg {
+  width: 120px;
+  height: 120px;
+}
+#mainDivMake {
+  width: 200px;
+  height: 400px;
+  border: 1px solid black;
+  display: none;
+}
