@@ -1,9 +1,10 @@
 
 // 강아지 이미지를 랜덤으로 보여 주겠다
-var dogImg=[];
 var setDogImg;
 var tmpDropImg;
 var dragIndex;
+var timer;
+var dogImg=[];
 var resultImg = [];
 var ranIndex=[2,1,5,6,10,9,3,11,4,7,0,8];
 window.onload=function(){
@@ -16,8 +17,6 @@ window.onload=function(){
     for(var index = 0; index < tmpImg.length; index++){
         tmpDiv[index].innerHTML=dogImg[index];
     }
-    console.log(dogImg);
-    console.log(ranIndex.length);
 }
 
 function getImgDragEvent(index){//드래그 시작 하면서 실행 되는 이벤트 
@@ -64,6 +63,23 @@ function compareImg(){
     if(cnt == true){
         alert("성공성공");
     }
+    clearInterval(timer);
     console.log(nowImgArr)
     
+}
+
+function startTime(){
+    var clickedTime=new Date().getTime();//객체 사용 new 로 사용 파란 색 객체-> 함수들을 묶은 것이다. 
+                timer=setInterval(function(){//함수 역활은 일정 시간 마다 반복 해준다. 100ms=1s 매개 변수가 2개 첫 함수, 시간
+                var nowTime=new Date().getTime();
+                var duration=new Date(nowTime - clickedTime);
+                
+                var min=duration.getMinutes();
+                var sec=duration.getSeconds();
+                var millesc=duration.getMilliseconds();
+
+                document.getElementById("mainDivTime").innerHTML=min+ ":" + sec + ":" +millesc;
+
+            },100);
+
 }

@@ -14,9 +14,7 @@
     </header>
 
     <main id="main">
-        <div>
-            time
-        </div>
+        <div id="mainDivTime"></div>
         <div id="mainDiv">
             <div class="mainDivImgDiv" draggable="true" ondragstart="getImgDragEvent(0)" ondragover="setImgOverEvent()"  ondrop="setImgDropEvent(0)" ><img class="mainDivImgDivImg" src="img/dog1.jpg"></div>
             <div class="mainDivImgDiv" draggable="true" ondragstart="getImgDragEvent(1)" ondragover="setImgOverEvent()"  ondrop="setImgDropEvent(1)" ><img class="mainDivImgDivImg" src="img/dog2.jpg"></div>
@@ -32,7 +30,8 @@
             <div class="mainDivImgDiv" draggable="true" ondragstart="getImgDragEvent(11)"ondragover="setImgOverEvent()"  ondrop="setImgDropEvent(11)"><img class="mainDivImgDivImg" src="img/dog12.jpg"></div>
         </div>
         <div>
-            <img src="img/stopImg.webp" onclick="compareImg()">
+            <input type="button" value="Stop" class="mainDivButtonImg"  onclick="compareImg()">
+            <input type="button" value="Start" class="mainDivButtonImg"  onclick="startTime()">
         </div>
     </main>
 
