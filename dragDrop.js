@@ -6,21 +6,9 @@ var dragIndex;
 var timer;
 var dogImg=[];
 var resultImg = [];
-var ranIndex=[2,1,5,6,10,9,3,11,4,7,0,8];
+var ranArr=[];
 window.onload=function(){
-    randomShowImg();
-    
-}
-function randomShowImg(){//화면에 랜덤으로 이미지를 섞어서 보여주는 함수
-    var tmpImg=document.getElementsByClassName("mainDivImgDiv");
-    var tmpDiv=document.getElementsByClassName("mainDivImgDiv");//div에 다시 넣어 주기 위해
-    for(var index = 0; index < tmpImg.length; index++){
-       dogImg[ranIndex[index]]=tmpImg[index].innerHTML;
-       resultImg[index]=tmpImg[index].innerHTML;
-    }
-    for(var index = 0; index < tmpImg.length; index++){
-        tmpDiv[index].innerHTML=dogImg[index];
-    }
+    randomShowImg();  
 }
 
 function getImgDragEvent(index){//드래그 시작 하면서 실행 되는 이벤트 
@@ -42,9 +30,6 @@ function setImgDropEvent(index){
     document.getElementsByClassName("mainDivImgDiv")[index].innerHTML=setDogImg;
     //document.getElementsByClassName("mainDivImgDiv")[dragIndex].innerHTML=" ";
     document.getElementsByClassName("mainDivImgDiv")[dragIndex].innerHTML=tmpDropImg;
-    // console.log(index);
-    // console.log(document.getElementsByClassName("mainDivImgDiv")[index].innerHTML=setDogImg);
-   
 }
 
 function compareImg(){
@@ -52,26 +37,23 @@ function compareImg(){
    var cnt=true;
    var nowImg= document.getElementsByClassName("mainDivImgDiv");
    console.log(resultImg)
-   for(var index = 0; index < resultImg.length; index++){
-        nowImgArr[index]=nowImg[index].innerHTML;
+    for(var index = 0; index < resultImg.length; index++){
+            nowImgArr[index]=nowImg[index].innerHTML;
     }
     for(var i = 0; i<resultImg.length; i++){
         if(nowImgArr[i] == resultImg[i]){
             continue;
         }else{
             alert("다시 하기");
-            randomShowImg();
-            startTime();
+            location.reload();
             cnt=false;
             break;
         }
     }
     if(cnt == true){
         alert("성공성공");
-        clearInterval(timer);
     }
-     clearInterval(timer);
-    console.log(nowImgArr)
+    clearInterval(timer);  
     
 }
 
@@ -90,4 +72,24 @@ function startTime(){
             },100);
 
 }
- 
+
+function randomShowImg(){//화면에 랜덤으로 이미지를 섞어서 보여주는 함수
+    var tmpImg=document.getElementsByClassName("mainDivImgDiv");
+    var tmpDiv=document.getElementsByClassName("mainDivImgDiv");//div에 다시 넣어 주기 위해
+    for(var i=0; i<12; i++){
+        ranArr[i]=Math.floor(Math.random()*12);
+        for(var j=0; j<i; j++){
+            if(ranArr[i] == ranArr[j]){
+                i --;
+                break;
+            }
+        }
+    }
+    for(var index = 0; index < tmpImg.length; index++){
+       dogImg[ranArr[index]]=tmpImg[index].innerHTML;
+       resultImg[index]=tmpImg[index].innerHTML;
+    }
+    for(var index = 0; index < tmpImg.length; index++){
+        tmpDiv[index].innerHTML=dogImg[index];
+    }
+}
