@@ -8,6 +8,10 @@ var dogImg=[];
 var resultImg = [];
 var ranIndex=[2,1,5,6,10,9,3,11,4,7,0,8];
 window.onload=function(){
+    randomShowImg();
+    
+}
+function randomShowImg(){//화면에 랜덤으로 이미지를 섞어서 보여주는 함수
     var tmpImg=document.getElementsByClassName("mainDivImgDiv");
     var tmpDiv=document.getElementsByClassName("mainDivImgDiv");//div에 다시 넣어 주기 위해
     for(var index = 0; index < tmpImg.length; index++){
@@ -56,14 +60,17 @@ function compareImg(){
             continue;
         }else{
             alert("다시 하기");
+            randomShowImg();
+            startTime();
             cnt=false;
             break;
         }
     }
     if(cnt == true){
         alert("성공성공");
+        clearInterval(timer);
     }
-    clearInterval(timer);
+     clearInterval(timer);
     console.log(nowImgArr)
     
 }
@@ -83,3 +90,4 @@ function startTime(){
             },100);
 
 }
+ 
