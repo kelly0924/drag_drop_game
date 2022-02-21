@@ -36,7 +36,7 @@
 .mainDivImgDivImg {
   width: 110px;
   height: 110px;
-  border: 0.3px solid black;
+  /* border: 0.1px solid black; */
 }
 .mainDivButtonImg {
   width: 120px;

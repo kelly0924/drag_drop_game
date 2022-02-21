@@ -31,30 +31,24 @@ function setImgDropEvent(index){
     //document.getElementsByClassName("mainDivImgDiv")[dragIndex].innerHTML=" ";
     document.getElementsByClassName("mainDivImgDiv")[dragIndex].innerHTML=tmpDropImg;
 }
-
-function compareImg(){
-   var nowImgArr=[];
-   var cnt=true;
-   var nowImg= document.getElementsByClassName("mainDivImgDiv");
-   console.log(resultImg)
+function againPlayGame(){
+    var nowImgArr=[];
+    var cnt=true;
+    var nowImg= document.getElementsByClassName("mainDivImgDiv");
     for(var index = 0; index < resultImg.length; index++){
             nowImgArr[index]=nowImg[index].innerHTML;
     }
+    console.log(resultImg);
     for(var i = 0; i<resultImg.length; i++){
         if(nowImgArr[i] == resultImg[i]){
+            cnt=true;
             continue;
         }else{
-            alert("다시 하기");
-            location.reload();
             cnt=false;
             break;
         }
     }
-    if(cnt == true){
-        alert("성공성공");
-    }
-    clearInterval(timer);  
-    
+    return cnt;
 }
 
 function startTime(){
@@ -62,7 +56,6 @@ function startTime(){
                 timer=setInterval(function(){//함수 역활은 일정 시간 마다 반복 해준다. 100ms=1s 매개 변수가 2개 첫 함수, 시간
                 var nowTime=new Date().getTime();
                 var duration=new Date(nowTime - clickedTime);
-                
                 var min=duration.getMinutes();
                 var sec=duration.getSeconds();
                 var millesc=duration.getMilliseconds();
@@ -72,7 +65,6 @@ function startTime(){
             },100);
 
 }
-
 function randomShowImg(){//화면에 랜덤으로 이미지를 섞어서 보여주는 함수
     var tmpImg=document.getElementsByClassName("mainDivImgDiv");
     var tmpDiv=document.getElementsByClassName("mainDivImgDiv");//div에 다시 넣어 주기 위해
@@ -92,4 +84,18 @@ function randomShowImg(){//화면에 랜덤으로 이미지를 섞어서 보여�
     for(var index = 0; index < tmpImg.length; index++){
         tmpDiv[index].innerHTML=dogImg[index];
     }
+}
+
+function compareImg(){
+    var tmpCnt=againPlayGame();
+
+    if(tmpCnt == true){
+        alert("완성! 완성 하는데 걸린 시간 : " +   document.getElementById("mainDivTime").innerHTML);
+        location.reload();
+    }else {
+        alert("틀렸습니다. 이어서 도전 하기!!");
+        startTime();
+    }
+    clearInterval(timer);  
+    
 }
