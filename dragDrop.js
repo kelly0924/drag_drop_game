@@ -7,6 +7,9 @@ var timer;
 var dogImg=[];
 var resultImg = [];
 var ranArr=[];
+var resultMin;
+var resultSec;
+var resultMilesc;
 window.onload=function(){
     randomShowImg();  
 }
@@ -51,6 +54,10 @@ function againPlayGame(){
     return cnt;
 }
 
+function startGame(){
+    startTime();
+
+}
 function startTime(){
     var clickedTime=new Date().getTime();//객체 사용 new 로 사용 파란 색 객체-> 함수들을 묶은 것이다. 
                 timer=setInterval(function(){//함수 역활은 일정 시간 마다 반복 해준다. 100ms=1s 매개 변수가 2개 첫 함수, 시간
@@ -59,11 +66,9 @@ function startTime(){
                 var min=duration.getMinutes();
                 var sec=duration.getSeconds();
                 var millesc=duration.getMilliseconds();
-
                 document.getElementById("mainDivTime").innerHTML=min+ ":" + sec + ":" +millesc;
 
             },100);
-
 }
 function randomShowImg(){//화면에 랜덤으로 이미지를 섞어서 보여주는 함수
     var tmpImg=document.getElementsByClassName("mainDivImgDiv");
@@ -90,12 +95,22 @@ function compareImg(){
     var tmpCnt=againPlayGame();
 
     if(tmpCnt == true){
-        alert("완성! 완성 하는데 걸린 시간 : " +   document.getElementById("mainDivTime").innerHTML);
-        location.reload();
+        // alert("완성! 완성 하는데 걸린 시간 : " +   document.getElementById("mainDivTime").innerHTML);
+        document.getElementById("headerDivH1").innerHTML="";
+        document.getElementById("headerDivH1").innerHTML="완성 하였습니다.";
+        document.getElementsByClassName("mainDivButtonImg")[0].style.display="none";
+        document.getElementsByClassName("mainDivButtonImg")[1].style.display="none";
+        document.getElementById("mainDivButtonAgainImg").style.display="block";
+        clearInterval(timer);     
+        //location.reload();
     }else {
-        alert("틀렸습니다. 이어서 도전 하기!!");
-        startTime();
+        //clearInterval(timer); 
+        document.getElementById("headerDivH1").innerHTML="";
+        document.getElementById("headerDivH1").innerHTML="틀렸습니다. 계속 진행 해주세요!";
     }
-    clearInterval(timer);  
-    
+    //clearInterval(timer);      
+}
+
+function playAgain(){
+    location.reload();
 }

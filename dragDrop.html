@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="dragDrop.css">
     <link rel="stylesheet" type="text/css" href="public.css" >
+    <link rel="stylesheet" type="text/css" href="mobile.css">
     <title>dragDiop Game</title>
 </head>
 <body>
     <header id="header">
         <div id="headerDiv">
-            <h1>아래 그림을 완성 하세요!</h1>
+            <h1 id="headerDivH1">아래 그림을 완성 하세요!</h1>
         </div>
     </header>
 
@@ -33,7 +34,8 @@
             </div>
             <div>
                 <input type="button" value="Stop" class="mainDivButtonImg"  onclick="compareImg()">
-                <input type="button" value="Start" class="mainDivButtonImg"  onclick="startTime()">
+                <input type="button" value="Start" class="mainDivButtonImg"  onclick="startGame()">
+                <input type="button" id="mainDivButtonAgainImg" value="again" onclick="playAgain()">
             </div>
         </div>
 
