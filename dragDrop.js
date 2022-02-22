@@ -12,6 +12,9 @@ var resultSec;
 var resultMilesc;
 window.onload=function(){
     randomShowImg();  
+    for(var index =0; index<12; index++){
+        document.getElementsByClassName("mainDivImgDivImg")[index].setAttribute("draggable",false);
+    }
 }
 
 function getImgDragEvent(index){//드래그 시작 하면서 실행 되는 이벤트 
@@ -56,8 +59,12 @@ function againPlayGame(){
 
 function startGame(){
     startTime();
-
+    document.getElementById("mainDivStartButton").disabled="true";//비활성화 
+    for(var index =0; index<12; index++){
+        document.getElementsByClassName("mainDivImgDivImg")[index].setAttribute("draggable",true);
+    }
 }
+
 function startTime(){
     var clickedTime=new Date().getTime();//객체 사용 new 로 사용 파란 색 객체-> 함수들을 묶은 것이다. 
                 timer=setInterval(function(){//함수 역활은 일정 시간 마다 반복 해준다. 100ms=1s 매개 변수가 2개 첫 함수, 시간
